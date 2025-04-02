@@ -31,7 +31,7 @@ println(initialSolution)
 
 # This simply counts the amount of prisions with 0 prisioners
 function badEval(solution::Vector{Vector{Int}})
-    return count(i -> (i[1] == 0), size.(solution))
+    return size(solution)[1] - count(i -> (i[1] == 0), size.(solution))
 end
 
 function canMoveTo(prisioner::Int, prision::Vector{Int}, restrictions)
@@ -64,48 +64,67 @@ function badCheckPossibleMoves(solution::Vector{Vector{Int}}, instance::Instance
     return possibleMoves
 end
 
+function movePrisioner(originPrision, newPrision, prisioner)
+    deleteat!(originPrision, originPrision .== prisioner)
+    push!(newPrision, prisioner)
+end
+
 
 globalBest = deepcopy(initialSolution)
 currentSolution = initialSolution
 shouldStop = false
 
-for iteration in 1:2
-    shouldStop = true
+for iteration in 1:10
+    shouldStop = false
     possibleMoves = badCheckPossibleMoves(currentSolution, instance)
-    # This can also be optimized, by changing the solution directly and then undoing the changes if they dont improve it
-    newSolution = currentSolution # Actually we are not copying, we are changing it directly, so skill issue
+
+    newSolution = deepcopy(currentSolution)
+
+    println("--------------------")
+    println("Iteration: $iteration")
+    println("Current Solution: $currentSolution")
 
     # Iterate over prisioners and try to move them somewhere else
-    for (prision_index, prision) in enumerate(currentSolution)
+    for (prisionIndex, prision) in enumerate(currentSolution)
         for prisioner in prision
             # Try to move him to another prision
-            for newPrision in possibleMoves[prisioner]
-                # Remove him from the current and put him in the new one
-                println("#### BEFORE ####")
-                println("Solution: $newSolution")
-                println("Prision: $prision")
-                println("Prisioner: $prisioner")
-                println("NewSolution Value: $(badEval(newSolution))")
-                println("CurrentSolution Value: $(badEval(currentSolution))")
+            for newPrisionIndex in shuffle(possibleMoves[prisioner])
 
-                deleteat!(prision, prision .== prisioner)
-                push!(newSolution[newPrision], prisioner)
+                originPrision = newSolution[prisionIndex]
+                newPrision = newSolution[newPrisionIndex]
 
-                println("\n\n#### AFTER ####")
-                println("Solution: $newSolution")
-                println("Prision: $prision")
-                println("Prisioner: $prisioner")
-                println("NewSolution Value: $(badEval(newSolution))")
-                println("CurrentSolution Value: $(badEval(currentSolution))")
+                movePrisioner(originPrision, newPrision, prisioner)
 
+                # If it makes a worse solution, undo the stuff
+                if (badEval(newSolution) > badEval(currentSolution))
+                    movePrisioner(newPrision, originPrision, prisioner)
+                else
+                    # Otherwise keep it with first improvement
+                    if (badEval(newSolution) <= badEval(globalBest))
+                        global globalBest = deepcopy(newSolution)
+                        global currentSolution = deepcopy(newSolution)
+                    end
+                    shouldStop = true
+                    break
+                end
+
+            end
+            if (shouldStop)
                 break
             end
+        end
+        if (shouldStop)
             break
         end
-        break
     end
-    break
+
 end
+
+println("\n\n")
+println("######### END #########")
+println("Moves = $(badCheckPossibleMoves(globalBest, instance))")
+println("Solution is: $globalBest")
+println("With value: $(badEval(globalBest))")
 
 # restrictionLookup[0] = "foobar"
 
