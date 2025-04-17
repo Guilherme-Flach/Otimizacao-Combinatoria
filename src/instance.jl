@@ -1,7 +1,10 @@
 
 Prisioner = Int
 Prision = Vector{Prisioner}
-Solution = Vector{Prision}
+mutable struct Solution
+    prisionsStructure::Vector{Prision}
+    value::Int
+end
 
 # Struct representing an instance of the problem
 struct Instance

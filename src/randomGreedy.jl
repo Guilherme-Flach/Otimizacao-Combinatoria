@@ -1,7 +1,7 @@
 include("instance.jl")
 
 function randomGreedy(instance::Instance, alpha::Float64)::Solution
-    solution = Solution()
+    solution = Solution(Vector{Prision}(), 0)
 
     prisioners = 1:instance.n
 
@@ -21,9 +21,11 @@ function countRestrictions(prisioner::Prisioner, instance::Instance)::Prisioner
     return sum(instance.alliances[prisioner, :])
 end
 
-function allocatePrision!(prisions::Solution, prisioner::Prisioner, instance::Instance)
+
+function allocatePrision!(solution::Solution, prisioner::Prisioner, instance::Instance)
     needsNewPrision = true
-    for currentPrision in prisions
+
+    for currentPrision in shuffle(solution.prisionsStructure)
         fitsInCurrentPrision = true
         # Look throught the inmates and try to find a restriction
         for inmate in currentPrision
@@ -43,6 +45,10 @@ function allocatePrision!(prisions::Solution, prisioner::Prisioner, instance::In
 
     # If the prisioner can't be placed into an already existing prision, allocate a new one
     if (needsNewPrision)
-        push!(prisions, [prisioner])
+        push!(solution.prisionsStructure, [prisioner])
+
+        # Worsen solution value since another prision is needed
+        solution.value += 1
     end
+
 end

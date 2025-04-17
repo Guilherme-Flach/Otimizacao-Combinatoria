@@ -22,26 +22,23 @@ display(instance.alliances)
 
 # Initialize a trivial valid solution (each prisioner in its own prision)
 function generateTrivialSolution()
-    solution = Solution()
+    solution = Vector{Prision}()
     for i in 1:instance.n
         push!(solution, [i])
     end
-    return solution
+    return Solution(solution, instance.n)
 end
 
 # GRASP it
 globalBest = generateTrivialSolution()
 for i = 1:1
-    initialSolution = randomGreedy(instance, 1.0)
+    initialSolution = randomGreedy(instance, 0.1)
     solution = localSearch(initialSolution, instance)
-    display(solution)
-    if badEval(solution) < badEval(globalBest)
+    if solution.value < globalBest.value
         global globalBest = deepcopy(solution)
     end
 end
 
 println("\n\n")
 println("######### END #########")
-println("Moves = $(badCheckPossibleMoves(globalBest, instance))")
 println("Solution is: $globalBest")
-println("With value: $(badEval(globalBest))")

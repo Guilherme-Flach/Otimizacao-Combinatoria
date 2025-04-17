@@ -1,73 +1,67 @@
 include("instance.jl")
 
-function localSearch(initialSolution::Solution, instance::Instance)::Solution
-    currentSolution = deepcopy(initialSolution)
+function localSearch(solution::Solution, instance::Instance)::Solution
     foundLocalMinimum = false
     while !foundLocalMinimum
         # Assume we are at a local minimum until we find a better solution
         foundLocalMinimum = true
-        possibleMoves = badCheckPossibleMoves(currentSolution, instance)
-        newSolution = deepcopy(currentSolution)
+        bestLocally = deepcopy(solution)
 
-        # Iterate over prisioners and try to move them somewhere else
-        for (prisionIndex, prision) in enumerate(currentSolution)
-            for prisioner in prision
-                # Try to move him to another prision
-                for newPrisionIndex in shuffle(possibleMoves[prisioner])
+        # Explode a prision and try to place the prisioners somewhere else
+        for (prisionIndex, prision) in enumerate(solution.prisionsStructure)
+            newSolution = deepcopy(solution)
 
-                    originPrision = newSolution[prisionIndex]
-                    newPrision = newSolution[newPrisionIndex]
+            deleteat!(newSolution.prisionsStructure, prisionIndex)
 
-                    movePrisioner!(originPrision, newPrision, prisioner)
-                    # If it makes for a better solution, we should keep it
-                    if (badEval(newSolution) < badEval(currentSolution))
-                        currentSolution = deepcopy(newSolution)
-                        foundLocalMinimum = false
-                    else
-                        # Otherwise, keep searching
-                        movePrisioner!(newPrision, originPrision, prisioner)
-                    end
-                end
+            # Hope all prisioners can be reallocated into already existing prisions
+            newSolution.value -= 1
+
+            # Reallocate the prisioners
+            for prisioner in shuffle(prision)
+                allocatePrision!(newSolution, prisioner, instance)
+            end
+
+
+            if (newSolution.value < bestLocally.value)
+                # maybe this can be removed
+                bestLocally = deepcopy(newSolution)
+                foundLocalMinimum = false
+            end
+
+            # Keep going for best improvement
+        end
+        solution = deepcopy(bestLocally)
+    end
+    return solution
+end
+
+function allocatePrision!(solution::Solution, prisioner::Prisioner, instance::Instance)
+    needsNewPrision = true
+
+    for currentPrision in shuffle(solution.prisionsStructure)
+        fitsInCurrentPrision = true
+        # Look throught the inmates and try to find a restriction
+        for inmate in currentPrision
+            if (instance.alliances[prisioner, inmate] == 1)
+                fitsInCurrentPrision = false
+                break
             end
         end
-    end
-    return currentSolution
-end
 
-# This simply counts the amount of prisions with 0 prisioners
-function badEval(solution::Solution)::Int
-    return count(i -> (i[1] != 0), size.(solution))
-end
-
-function canMoveTo(prisioner::Int, prision::Prision, restrictions)::Bool
-    for inmate in prision
-        if inmate == prisioner
-            return false
-        end
-        if restrictions[inmate, prisioner] == 1
-            return false
-        end
-    end
-    return true
-end
-
-# No differential eval, just check them all
-function badCheckPossibleMoves(solution::Solution, instance::Instance)::Vector{Prision}
-    possibleMoves = Vector{Prision}()
-    for i = 1:instance.n
-        push!(possibleMoves, [])
-
-        for (prisionIndex, prision) in enumerate(solution)
-            if canMoveTo(i, prision, instance.alliances)
-                push!(possibleMoves[i], prisionIndex)
-            end
+        # If possible, put him into that prision and stop the search
+        if (fitsInCurrentPrision)
+            push!(currentPrision, prisioner)
+            needsNewPrision = false
+            break
         end
     end
 
-    return possibleMoves
-end
+    # If the prisioner can't be placed into an already existing prision, allocate a new one
+    if (needsNewPrision)
+        push!(solution.prisionsStructure, [prisioner])
 
-function movePrisioner!(originPrision, newPrision, prisioner)
-    deleteat!(originPrision, originPrision .== prisioner)
-    push!(newPrision, prisioner)
+        # Worsen solution value since another prision is needed
+        solution.value += 1
+    end
+
 end
