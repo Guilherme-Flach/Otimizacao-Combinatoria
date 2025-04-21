@@ -37,12 +37,14 @@ function main()
     end
 
     # GRASP it
-    globalBest = generateTrivialSolution()
+    globalBest = randomGreedy(instance, 0.0) # Run a deterministic greedy for the base solution
+    println("Initialized base solution with value $(globalBest.value)")
     for i = 1:iterationsNum
-        initialSolution = randomGreedy(instance, 0.1)
+        initialSolution = randomGreedy(instance, 0.15)
         solution = localSearch(initialSolution, instance)
         if solution.value < globalBest.value
             globalBest = deepcopy(solution)
+            println("Found better solution with value $(globalBest.value)")
         end
     end
 

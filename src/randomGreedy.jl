@@ -35,10 +35,8 @@ function randomGreedy(instance::Instance, alpha::Float64)::Solution
         end
 
         sort!(partialSolutions, by=s -> s.restrictionsCount)
-        display(partialSolutions)
 
-        # CHANGE: Pick the first one for now, do funny random stuff later
-        selectedSolution::PartialSolution = partialSolutions[1]
+        selectedSolution::PartialSolution = pickRandom(partialSolutions, alpha)
 
         # Update current prision layout
         # Need to add another prision
@@ -60,6 +58,14 @@ function randomGreedy(instance::Instance, alpha::Float64)::Solution
     return Solution(prisionAllocations, totalPrisions)
 end
 
+
+function pickRandom(array, top_percent)
+    sliceIndex = Int(round(size(array)[1] * top_percent))
+
+    return rand(array[1:max(1, sliceIndex)])
+
+
+end
 
 function makePartialSolutions(prisioner::Prisioner, prision::Prision, prisionIndex::Int, prisionRestrictions::Set{Prisioner}, instance::Instance)
     restrictionsCount = 0
