@@ -1,54 +1,82 @@
 include("instance.jl")
 
+struct PartialSolution
+    restrictionsCount::Int
+    prisioner::Prisioner
+    prision::Int
+    newPrisionRestrictions::Set{Prisioner}
+end
+
+
 function randomGreedy(instance::Instance, alpha::Float64)::Solution
-    solution = Solution(Vector{Prision}(), 0)
-
-    prisioners = 1:instance.n
-
-    # Dumb grasp, perfectly deterministic using restriction count
-    prisioners = sort(prisioners, rev=true, by=x -> countRestrictions(x, instance))
-
-    for prisioner in prisioners
-        allocatePrision!(solution, prisioner, instance)
+    remainingPrisioners = Set{Prisioner}()
+    for i = 1:instance.n
+        push!(remainingPrisioners, i)
     end
 
-    return solution
-end
+    # Matrix showing which prisioners can still fit into each prision
+    currentRestrictions = Vector{Set{Prisioner}}()
+    # For the greedy algorithm, we'll pick the one that creates the least number of restrictions
+    prisionAllocations = Vector{Vector{Int}}()
 
+    totalPrisions = 0
 
-function countRestrictions(prisioner::Prisioner, instance::Instance)::Prisioner
-    # Count the number of alliances a given prisioner has (amount of 1s in his line or column)
-    return sum(instance.alliances[prisioner, :])
-end
+    # Figure out an assignment for each prisioner
+    for i = 1:instance.n
+        partialSolutions = Vector{PartialSolution}()
 
-
-function allocatePrision!(solution::Solution, prisioner::Prisioner, instance::Instance)
-    needsNewPrision = true
-
-    for currentPrision in shuffle(solution.prisionsStructure)
-        fitsInCurrentPrision = true
-        # Look throught the inmates and try to find a restriction
-        for inmate in currentPrision
-            if (instance.alliances[prisioner, inmate] == 1)
-                fitsInCurrentPrision = false
-                break
+        for prisioner in remainingPrisioners
+            for (prisionIndex, prision) in enumerate(prisionAllocations)
+                if !(prisioner in currentRestrictions[prisionIndex])
+                    push!(partialSolutions, makePartialSolutions(prisioner, prision, prisionIndex, currentRestrictions[prisionIndex], instance))
+                end
             end
+            push!(partialSolutions, makePartialSolutions(prisioner, Vector{Int}(), totalPrisions + 1, Set{Int}(), instance))
         end
 
-        # If possible, put him into that prision and stop the search
-        if (fitsInCurrentPrision)
-            push!(currentPrision, prisioner)
-            needsNewPrision = false
-            break
+        sort!(partialSolutions, by=s -> s.restrictionsCount)
+        display(partialSolutions)
+
+        # CHANGE: Pick the first one for now, do funny random stuff later
+        selectedSolution::PartialSolution = partialSolutions[1]
+
+        # Update current prision layout
+        # Need to add another prision
+        if (selectedSolution.prision > totalPrisions)
+            push!(prisionAllocations, [selectedSolution.prisioner])
+            push!(currentRestrictions, selectedSolution.newPrisionRestrictions)
+            totalPrisions += 1
+        else
+            push!(prisionAllocations[selectedSolution.prision], selectedSolution.prisioner)
+            currentRestrictions[selectedSolution.prision] = selectedSolution.newPrisionRestrictions
+        end
+
+        # Remove the prisioner from the unallocated ones
+        delete!(remainingPrisioners, selectedSolution.prisioner)
+    end
+
+
+
+    return Solution(prisionAllocations, totalPrisions)
+end
+
+
+function makePartialSolutions(prisioner::Prisioner, prision::Prision, prisionIndex::Int, prisionRestrictions::Set{Prisioner}, instance::Instance)
+    restrictionsCount = 0
+    newPrisionRestrictions = deepcopy(prisionRestrictions)
+    newPrision = deepcopy(prision)
+
+    for criminal in 1:instance.n
+        # Don't recount current prisioner
+        if (criminal == prisioner)
+            continue
+        end
+
+        if (instance.alliances[prisioner, criminal] == 1 && !(criminal in prisionRestrictions))
+            push!(newPrisionRestrictions, criminal)
+            restrictionsCount += 1
         end
     end
 
-    # If the prisioner can't be placed into an already existing prision, allocate a new one
-    if (needsNewPrision)
-        push!(solution.prisionsStructure, [prisioner])
-
-        # Worsen solution value since another prision is needed
-        solution.value += 1
-    end
-
+    return PartialSolution(restrictionsCount, prisioner, prisionIndex, newPrisionRestrictions)
 end
