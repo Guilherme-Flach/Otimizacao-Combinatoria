@@ -63,5 +63,4 @@ function allocatePrision!(solution::Solution, prisioner::Prisioner, instance::In
         # Worsen solution value since another prision is needed
         solution.value += 1
     end
-
 end

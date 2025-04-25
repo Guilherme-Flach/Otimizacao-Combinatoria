@@ -26,12 +26,12 @@ function randomGreedy(instance::Instance, alpha::Float64)::Solution
         partialSolutions = Vector{PartialSolution}()
 
         for prisioner in remainingPrisioners
-            for (prisionIndex, prision) in enumerate(prisionAllocations)
+            for prisionIndex in 1:totalPrisions
                 if !(prisioner in currentRestrictions[prisionIndex])
-                    push!(partialSolutions, makePartialSolutions(prisioner, prision, prisionIndex, currentRestrictions[prisionIndex], instance))
+                    push!(partialSolutions, makePartialSolutions(prisioner, prisionIndex, currentRestrictions[prisionIndex], instance))
                 end
             end
-            push!(partialSolutions, makePartialSolutions(prisioner, Vector{Int}(), totalPrisions + 1, Set{Int}(), instance))
+            push!(partialSolutions, makeEmptyPartialSolution(prisioner, totalPrisions, instance))
         end
 
         sort!(partialSolutions, by=s -> s.restrictionsCount)
@@ -63,26 +63,21 @@ function pickRandom(array, top_percent)
     sliceIndex = Int(round(size(array)[1] * top_percent))
 
     return rand(array[1:max(1, sliceIndex)])
-
-
 end
 
-function makePartialSolutions(prisioner::Prisioner, prision::Prision, prisionIndex::Int, prisionRestrictions::Set{Prisioner}, instance::Instance)
+function makePartialSolutions(prisioner::Prisioner, prisionIndex::Int, prisionRestrictions::Set{Prisioner}, instance::Instance)
     restrictionsCount = 0
-    newPrisionRestrictions = deepcopy(prisionRestrictions)
-    newPrision = deepcopy(prision)
+    newPrisionRestrictions = copy(prisionRestrictions)
 
-    for criminal in 1:instance.n
-        # Don't recount current prisioner
-        if (criminal == prisioner)
-            continue
-        end
-
-        if (instance.alliances[prisioner, criminal] == 1 && !(criminal in prisionRestrictions))
-            push!(newPrisionRestrictions, criminal)
-            restrictionsCount += 1
-        end
-    end
+    newPrisionRestrictions = union(prisionRestrictions, instance.alliancesAdjacency[prisioner])
+    restrictionsCount = length(newPrisionRestrictions)
 
     return PartialSolution(restrictionsCount, prisioner, prisionIndex, newPrisionRestrictions)
+end
+
+function makeEmptyPartialSolution(prisioner, totalPrisions, instance)
+
+    restrictionsCount = length(instance.alliancesAdjacency[prisioner])
+
+    return PartialSolution(restrictionsCount, prisioner, totalPrisions + 1, instance.alliancesAdjacency[prisioner])
 end

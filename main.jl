@@ -52,15 +52,6 @@ function main()
         display(instance.alliances)
     end
 
-    # Initialize a trivial valid solution (each prisioner in its own prision)
-    function generateTrivialSolution()
-        solution = Vector{Prision}()
-        for i in 1:instance.n
-            push!(solution, [i])
-        end
-        return Solution(solution, instance.n)
-    end
-
     # GRASP it
     globalBest = randomGreedy(instance, 1.0) # Run a deterministic greedy for the base solution
     globalBest = localSearch(globalBest, instance)

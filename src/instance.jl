@@ -13,4 +13,5 @@ struct Instance
     # Alliance matrix (n x n)
     # alliances[i,j] == 1 represesents if an alliace exists between prisioners i and j
     alliances::Matrix{Prisioner}
+    alliancesAdjacency::Vector{Set{Prisioner}}
 end
