@@ -1,4 +1,5 @@
 import Dates
+using .Threads
 include("src/reader.jl")
 include("src/instance.jl")
 include("src/randomGreedy.jl")
@@ -8,6 +9,8 @@ using Random
 
 function main()
     programStartTime = Dates.now()
+
+    display(Threads.nthreads())
 
 
     function displaySolution(solution::Solution, isFirstSolution=false)
@@ -40,6 +43,11 @@ function main()
         showRestrictions = parse(Bool, ARGS[5])
     end
 
+    rev = false
+    if (size(ARGS)[1] >= 6)
+        rev = parse(Bool, ARGS[6])
+    end
+
 
     Random.seed!(randomSeed)
 
@@ -53,16 +61,27 @@ function main()
     end
 
     # GRASP it
-    globalBest = randomGreedy(instance, 1.0) # Run a deterministic greedy for the base solution
+    globalBestLock = ReentrantLock()
+    globalBest = randomGreedy(instance, 0.0, rev) # Run a deterministic greedy for the base solution
     globalBest = localSearch(globalBest, instance)
+
+    alphaLock = ReentrantLock()
+
     displaySolution(globalBest, true)
-    for i = 1:iterationsNum
-        println("GREEDY: $(@elapsed initialSolution = randomGreedy(instance, alpha))")
-        println("LOCAL SEARCH: $(@elapsed solution = localSearch(initialSolution, instance))")
-        println("######################")
-        if solution.value < globalBest.value
-            globalBest = deepcopy(solution)
-            displaySolution(globalBest)
+    @threads for i = 1:iterationsNum
+        # println("GREEDY: $(@elapsed initialSolution = randomGreedy(instance, alpha))")
+        initialSolution = randomGreedy(instance, alpha, rev)
+        # println("LOCAL SEARCH: $(@elapsed solution = localSearch(initialSolution, instance))")
+        solution = localSearch(initialSolution, instance)
+        # println("######################")
+        @lock globalBestLock begin
+            if solution.value < globalBest.value
+                globalBest = deepcopy(solution)
+                displaySolution(globalBest)
+            end
+        end
+        if (alpha <= 1)
+            @lock alphaLock alpha = min(alpha + 0.002, 1.0)
         end
     end
 

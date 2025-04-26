@@ -8,7 +8,7 @@ struct PartialSolution
 end
 
 
-function randomGreedy(instance::Instance, alpha::Float64)::Solution
+function randomGreedy(instance::Instance, alpha::Float64, rev::Bool)::Solution
     remainingPrisioners = Set{Prisioner}()
     for i = 1:instance.n
         push!(remainingPrisioners, i)
@@ -34,7 +34,7 @@ function randomGreedy(instance::Instance, alpha::Float64)::Solution
             push!(partialSolutions, makeEmptyPartialSolution(prisioner, totalPrisions, instance))
         end
 
-        sort!(partialSolutions, by=s -> s.restrictionsCount)
+        sort!(partialSolutions, by=s -> s.restrictionsCount, rev=rev)
 
         selectedSolution::PartialSolution = pickRandom(partialSolutions, alpha)
 

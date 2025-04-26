@@ -21,7 +21,6 @@ function localSearch(solution::Solution, instance::Instance)::Solution
                 allocatePrision!(newSolution, prisioner, instance)
             end
 
-
             if (newSolution.value < bestLocally.value)
                 # maybe this can be removed
                 bestLocally = deepcopy(newSolution)
@@ -38,7 +37,7 @@ end
 function allocatePrision!(solution::Solution, prisioner::Prisioner, instance::Instance)
     needsNewPrision = true
 
-    for currentPrision in shuffle(solution.prisionsStructure)
+    for currentPrision in solution.prisionsStructure
         fitsInCurrentPrision = true
         # Look throught the inmates and try to find a restriction
         for inmate in currentPrision
