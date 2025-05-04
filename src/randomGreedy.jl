@@ -77,7 +77,7 @@ end
 
 function makeEmptyPartialSolution(prisioner, totalPrisions, instance)
 
-    restrictionsCount = length(instance.alliancesAdjacency[prisioner])
+    restrictionsCount = length(instance.alliancesAdjacency[prisioner]) + instance.n
 
     return PartialSolution(restrictionsCount, prisioner, totalPrisions + 1, instance.alliancesAdjacency[prisioner])
 end

@@ -24,7 +24,7 @@ function main()
     end
 
     # Variables to be extracted as command line params
-    if (size(ARGS)[1] <= 3)
+    if (size(ARGS)[1] < 3)
         println("Error reading args. Usage: `main.jl filepath iterations randomSeed`")
         return
     end
@@ -65,8 +65,6 @@ function main()
     globalBest = randomGreedy(instance, 0.0, rev) # Run a deterministic greedy for the base solution
     globalBest = localSearch(globalBest, instance)
 
-    alphaLock = ReentrantLock()
-
     displaySolution(globalBest, true)
     @threads for i = 1:iterationsNum
         # println("GREEDY: $(@elapsed initialSolution = randomGreedy(instance, alpha))")
@@ -79,9 +77,6 @@ function main()
                 globalBest = deepcopy(solution)
                 displaySolution(globalBest)
             end
-        end
-        if (alpha <= 1)
-            @lock alphaLock alpha = min(alpha + 0.002, 1.0)
         end
     end
 
