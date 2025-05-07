@@ -26,8 +26,18 @@ julia --threads auto main.jl <filepath> <iterations> <seed> [alpha] [showRestric
 
 `[reverse]`: Whether to reverse greedy logic (true or false, default: false)
 
-### Example:
+### Run Example:
 
 ```bash
 julia --threads auto main.jl instances/01.txt 100 42 0.2 true false
+```
+
+## 📊 Batch Testing with solution_benchmark
+
+The script solution_benchmark.jl runs multiple instances with different parameter settings and prints results in a CSV-friendly format, for later analysis.
+
+### Usage:
+
+```bash
+julia solution_benchmark.jl > results.csv
 ```

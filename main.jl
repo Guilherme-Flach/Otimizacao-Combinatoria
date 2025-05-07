@@ -83,7 +83,7 @@ function main()
     println("\n")
     println("######### END #########")
     println("Finished in: $(Dates.format(convert(Dates.DateTime, Dates.now() - programStartTime), "MM:SS.sss"))")
-    println("Solution is: $globalBest")
+    println("Best solution value: ", globalBest.value)
 end
 
 main()
