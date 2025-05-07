@@ -3,11 +3,16 @@ using Random
 
 # Test cases to run
 const TEST_CASES = [
-    ("instances/01.txt", 100, 42, 0.2),
-    ("instances/01.txt", 200, 1337, 0.3),
-    ("instances/01.txt", 150, 99, 0.1),
-    ("instances/01.txt", 120, 2024, 0.5),
-    ("instances/01.txt", 300, 17, 0.0),
+    ("instances/01.txt", 10000, 42, 0.1),
+    ("instances/02.txt", 10000, 42, 0.1),
+    ("instances/03.txt", 10000, 42, 0.1),
+    ("instances/04.txt", 10000, 42, 0.1),
+    ("instances/05.txt", 10000, 42, 0.1),
+    ("instances/06.txt", 10000, 42, 0.1),
+    ("instances/07.txt", 10000, 42, 0.1),
+    ("instances/08.txt", 10000, 42, 0.1),
+    ("instances/09.txt", 10000, 42, 0.1),
+    ("instances/10.txt", 10000, 42, 0.1),
 ]
 
 # CSV header

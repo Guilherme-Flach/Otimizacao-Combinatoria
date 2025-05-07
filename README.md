@@ -29,7 +29,7 @@ julia --threads auto main.jl <filepath> <iterations> <seed> [alpha] [showRestric
 ### Run Example:
 
 ```bash
-julia --threads auto main.jl instances/01.txt 100 42 0.2 true false
+julia --threads auto main.jl instances/01.txt 10000 42 0.1 true false
 ```
 
 ## 📊 Batch Testing with solution_benchmark
