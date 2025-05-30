@@ -12,29 +12,63 @@ using HiGHS
 using Revise
 
 function main()
-    prisioners = 1
+    if (size(ARGS)[1] < 3)
+        println("Error reading args. Usage: `main.jl filepath time_seconds random_seed")
+        return 1
+    end
+    
+    filepath = ARGS[1]
+    time_limit = parse(Int, ARGS[2])
+    random_seed = parse(Int, ARGS[3])
+        
+    filepath = ARGS[1]
+    print(filepath)
+    
     model = Model(HiGHS.Optimizer)
 
-    # Nodes must send a non negative amount of tons
-    @variable(model, x[i=1:8, j=1:8] >= 0)
+    set_time_limit_sec(model, time_limit)
+    set_attribute(model, "random_seed", random_seed)
 
-    # The amount of tons arriving at H must be at least 6
-    @constraint(model, sum(x[:, 8]) == 6)
+    n = 0
+    m = 0
+    
+    open(filepath, "r") do f
+        # First line is "n m"
+        line = readline(f)
+        n, m = parse.(Int, split(line))
 
-    # Arcs must respect their capacities
-    @constraint(model, [i = 1:8, j = 1:8], x[i, j] <= routes[i, j, 2])
+        # Since the maximum number of possible prisions required in an optimal solution is n,
+        # we can define a n x n matrix to represent the assignment of prisioners to prisions.
+        # In this representation, prisions[i,j] means that prisioner i will be in the prision with index j.
+        @variable(model, prisions[i=1:n, j=1:n], Bin)
 
-    # The amount of tons coming in from a node must match the amount coming out
-    # in other words, the sum of each line must be equal to the sum of each column
-    # (except for stuff coming from node 1 (first line) and 8 (last line))
-    @constraint(model, [i = 2:7], sum(x[i, :]) == sum(x[:, i]))
+        # Prisioners must be assigned into exactly one prision
+        @constraint(model, [i = 1:n], sum(prisions[i, :]) == 1)
 
-    # Minimize the amount of tons sent via an arc times the per ton of that arc
-    @objective(model, Min, sum(x .* routes[:, :, 1]))
+        
+        for line in eachline(f)
+            p1, p2 = parse.(Int, split(line))
 
-    optimize!(model)
-    @show objective_value(model)
-    @show value.(x)
+            # For the restriction modelling, we can define that p2 and p1 can't both be assigned to the same prision
+            @constraint(model, [j = 1:n], prisions[p1,j] + prisions[p2, j] <= 1)
+
+        end
+
+        # We want to minimize the amount of used prisions
+        # We can represent those with helper variables, indicating which prisions are in use
+        @variable(model, is_used[j = 1:n], Bin)
+    
+        # If there are any prisioners in the j prision, then is_used[j] is forced into 1, otherwise it can be set to 0
+        @constraint(model, [j = 1:n], sum(prisions[:, j]) <= is_used[j] * n)
+    
+        # We want to minimize the total amount of used prisions
+        @objective(model, Min, sum(is_used[:]))
+    
+        optimize!(model)
+        display(value.(prisions))
+        @show objective_value(model)
+        @show sum(value.(is_used))
+    end
 
 end
 
