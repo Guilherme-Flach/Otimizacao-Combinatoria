@@ -9,6 +9,7 @@ function localSearch(solution::Solution, instance::Instance)::Solution
 
         # Explode a prision and try to place the prisioners somewhere else
         for (prisionIndex, prision) in enumerate(solution.prisionsStructure)
+
             newSolution = deepcopy(solution)
 
             deleteat!(newSolution.prisionsStructure, prisionIndex)
@@ -17,17 +18,23 @@ function localSearch(solution::Solution, instance::Instance)::Solution
             newSolution.value -= 1
 
             # Reallocate the prisioners
+            neededNewPrision = false # Assume all the prisioners can fit pre-existing prisions
             for prisioner in shuffle(prision)
-                allocatePrision!(newSolution, prisioner, instance)
+                neededNewPrision = allocatePrision!(newSolution, prisioner, instance)
+                if (neededNewPrision)
+                    # If even one of the prisioners could not fit into one of the existing prisions,
+                    # there is no need to check the others, since it will never make for a better solution.
+                    break
+                end
             end
 
-            if (newSolution.value < bestLocally.value)
-                # maybe this can be removed
+            # equivalent to looking at: newSolution.value < bestLocally.value, since if a new prision was not needed, the solution value decereased by one
+            if (!neededNewPrision)
                 bestLocally = deepcopy(newSolution)
                 foundLocalMinimum = false
+                # Since the best improvement possible will always just be 1, we can stop looking after that.
+                break
             end
-
-            # Keep going for best improvement
         end
         solution = deepcopy(bestLocally)
     end
@@ -62,4 +69,6 @@ function allocatePrision!(solution::Solution, prisioner::Prisioner, instance::In
         # Worsen solution value since another prision is needed
         solution.value += 1
     end
+
+    return needsNewPrision
 end
