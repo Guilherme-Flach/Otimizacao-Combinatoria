@@ -12,7 +12,6 @@ function main()
 
     display(Threads.nthreads())
 
-
     function displaySolution(solution::Solution, isFirstSolution=false)
         elapsedTime = convert(Dates.DateTime, Dates.now() - programStartTime)
         if (isFirstSolution)
@@ -25,12 +24,12 @@ function main()
 
     # Variables to be extracted as command line params
     if (size(ARGS)[1] < 3)
-        println("Error reading args. Usage: `main.jl filepath iterations randomSeed`")
+        println("Error reading args. Usage: `main.jl filepath computationBudget randomSeed`")
         return
     end
 
     filePath = ARGS[1]
-    iterationsNum = parse(Int, ARGS[2])
+    computationBudget = parse(Int, ARGS[2])
     randomSeed = parse(Int, ARGS[3])
 
     alpha = 0.15
@@ -48,7 +47,6 @@ function main()
         rev = parse(Bool, ARGS[6])
     end
 
-
     Random.seed!(randomSeed)
 
     instance::Instance = reader(filePath)
@@ -60,10 +58,14 @@ function main()
         display(instance.alliances)
     end
 
+    iterationsNum = Int32(floor(computationBudget / instance.m))
+
     # GRASP it
     globalBestLock = ReentrantLock()
     globalBest = randomGreedy(instance, 0.0, rev) # Run a deterministic greedy for the base solution
     globalBest = localSearch(globalBest, instance)
+
+    println("Executing $(iterationsNum) iterations (consuming $(instance.m) per iteration).")
 
     displaySolution(globalBest, true)
     @threads for i = 1:iterationsNum
