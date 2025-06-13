@@ -7,6 +7,7 @@ import Pkg
 Pkg.activate(@__DIR__)
 Pkg.instantiate()
 
+
 using JuMP
 using HiGHS
 using Revise
@@ -72,12 +73,25 @@ function main()
         @objective(model, Min, sum(is_used[:]))
 
         optimize!(model)
-        display(value.(prisions))
+        # display(value.(prisions))
         @show objective_value(model)
         @show sum(value.(is_used))
+        display_solution(value.(prisions))
     end
 
 end
 
-main() # comentar aqui se for executar no terminal Julia
+function display_solution(solution)
+    readableSolution = ""
+
+    for prisioner in eachrow(solution)
+        prision_index = argmax(prisioner)
+        println(prisioner)
+        readableSolution = readableSolution * " " * string(prision_index)
+    end
+
+    println("[$(readableSolution) ]")
+end
+
+main()
 
