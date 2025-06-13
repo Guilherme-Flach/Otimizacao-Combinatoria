@@ -63,6 +63,7 @@ function main()
         @constraint(model, [j = 1:n], sum(prisions[:, j]) <= is_used[j] * n)
 
         # Extra restrictions to reduce the number of simetries
+        # Essentially, make sure that, in order for a new prision to be used, all prisions with a smaller index must have been used first.
         @variable(model, all_prisions_occupied[j=1:n], Bin)
         @constraint(model, [j = 1:n], sum(is_used[1:j]) >= all_prisions_occupied[j] * j)
         @constraint(model, [j = 2:n], is_used[j] <= all_prisions_occupied[j-1])
