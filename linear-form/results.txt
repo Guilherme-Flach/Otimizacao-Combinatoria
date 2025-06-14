@@ -1,0 +1,85 @@
+instance,n,m,iterations,seed,alpha,value,time
+## instances/01.txt
+instances/01.txt,1,3.0,00:05.031
+instances/01.txt,2,3.0,00:05.178
+instances/01.txt,3,3.0,00:05.039
+instances/01.txt,4,3.0,00:05.094
+instances/01.txt,5,3.0,00:05.225
+instances/01.txt,6,3.0,00:05.173
+instances/01.txt,7,3.0,00:05.288
+instances/01.txt,8,3.0,00:05.177
+instances/01.txt,9,3.0,00:05.034
+instances/01.txt,10,3.0,00:05.016
+## instances/02.txt
+instances/02.txt,1,4.0,00:05.073
+instances/02.txt,2,4.0,00:04.960
+instances/02.txt,3,4.0,00:05.087
+instances/02.txt,4,4.0,00:05.071
+instances/02.txt,5,4.0,00:05.053
+instances/02.txt,6,4.0,00:04.924
+instances/02.txt,7,4.0,00:05.022
+instances/02.txt,8,3.9999999999999996,00:05.085
+instances/02.txt,9,4.0,00:05.175
+instances/02.txt,10,4.0,00:05.156
+## instances/03.txt
+instances/03.txt,1,5.0,00:06.237
+instances/03.txt,2,5.000000000000001,00:05.523
+instances/03.txt,3,5.0,00:05.850
+instances/03.txt,4,5.0,00:05.874
+instances/03.txt,5,5.0,00:04.963
+instances/03.txt,6,5.0,00:06.115
+instances/03.txt,7,5.0,00:06.000
+instances/03.txt,8,5.0,00:05.643
+instances/03.txt,9,5.0,00:05.263
+instances/03.txt,10,5.0,00:05.825
+## instances/04.txt
+instances/04.txt,1,9.0,05:05.094
+instances/04.txt,2,9.0,04:01.798
+instances/04.txt,3,9.0,03:25.561
+instances/04.txt,4,9.0,04:12.866
+instances/04.txt,5,9.0,05:05.240
+instances/04.txt,6,9.0,03:32.083
+instances/04.txt,7,9.0,03:02.679
+instances/04.txt,8,9.0,03:52.084
+instances/04.txt,9,9.0,04:17.121
+instances/04.txt,10,9.0,04:31.692
+## instances/05.txt
+instances/05.txt,1,10.0,05:05.112
+instances/05.txt,2,10.0,05:05.026
+instances/05.txt,3,10.0,05:05.095
+instances/05.txt,4,10.0,05:04.802
+instances/05.txt,5,10.0,05:05.235
+instances/05.txt,6,10.0,05:04.902
+instances/05.txt,7,10.0,05:05.229
+instances/05.txt,8,10.0,05:05.212
+instances/05.txt,9,10.0,05:05.006
+instances/05.txt,10,10.0,05:04.892
+## instances/06.txt
+instances/06.txt,1,8.0,05:05.288
+instances/06.txt,2,8.0,05:05.260
+instances/06.txt,3,8.0,05:05.330
+instances/06.txt,4,8.0,05:05.192
+instances/06.txt,5,7.999999999999532,05:04.357
+instances/06.txt,6,7.999999999999966,05:04.479
+instances/06.txt,7,8.0,05:05.004
+instances/06.txt,8,8.0,05:05.233
+instances/06.txt,9,8.0,05:05.504
+instances/06.txt,10,8.0,05:05.169
+## instances/07.txt
+instances/07.txt,1,18.0,05:05.583
+instances/07.txt,2,17.0,05:05.145
+instances/07.txt,3,18.0,05:05.080
+instances/07.txt,4,18.0,05:05.138
+instances/07.txt,5,18.0,05:05.253
+instances/07.txt,6,18.0,05:05.120
+instances/07.txt,7,18.0,05:05.152
+instances/07.txt,8,17.0,05:05.154
+instances/07.txt,9,18.0,05:04.990
+instances/07.txt,10,18.0,05:05.154
+## instances/08.txt
+instances/08.txt,1,14.0,05:05.254
+instances/08.txt,2,13.0,05:05.247
+instances/08.txt,3,13.0,05:05.123
+instances/08.txt,4,13.0,05:05.096
+instances/08.txt,5,13.0,05:05.298
+instances/08.txt,6,13.0,05:05.315

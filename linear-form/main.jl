@@ -74,9 +74,9 @@ function main()
 
         optimize!(model)
         # display(value.(prisions))
+        display_solution(value.(prisions))
         @show objective_value(model)
         @show sum(value.(is_used))
-        display_solution(value.(prisions))
     end
 
 end
@@ -86,11 +86,10 @@ function display_solution(solution)
 
     for prisioner in eachrow(solution)
         prision_index = argmax(prisioner)
-        println(prisioner)
         readableSolution = readableSolution * " " * string(prision_index)
     end
 
-    println("[$(readableSolution) ]")
+    println("Solution: [$(readableSolution) ]")
 end
 
 main()
