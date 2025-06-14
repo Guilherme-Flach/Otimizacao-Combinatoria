@@ -77,9 +77,35 @@ instances/07.txt,8,17.0,05:05.154
 instances/07.txt,9,18.0,05:04.990
 instances/07.txt,10,18.0,05:05.154
 ## instances/08.txt
-instances/08.txt,1,14.0,05:05.254
-instances/08.txt,2,13.0,05:05.247
-instances/08.txt,3,13.0,05:05.123
-instances/08.txt,4,13.0,05:05.096
-instances/08.txt,5,13.0,05:05.298
-instances/08.txt,6,13.0,05:05.315
+instances/08.txt,1,14.0,05:05.705
+instances/08.txt,2,13.0,05:05.510
+instances/08.txt,3,13.0,05:05.356
+instances/08.txt,4,13.0,05:05.617
+instances/08.txt,5,13.0,05:05.727
+instances/08.txt,6,13.0,05:06.052
+instances/08.txt,7,13.0,05:05.516
+instances/08.txt,8,14.0,05:05.640
+instances/08.txt,9,15.0,05:05.476
+instances/08.txt,10,14.0,05:05.557
+## instances/09.txt
+instances/09.txt,1,44.0,05:05.583
+instances/09.txt,2,26.0,05:05.643
+instances/09.txt,3,13.0,05:05.687
+instances/09.txt,4,15.0,05:05.623
+instances/09.txt,5,44.0,05:05.889
+instances/09.txt,6,44.0,05:05.691
+instances/09.txt,7,19.0,05:05.708
+instances/09.txt,8,15.0,05:05.677
+instances/09.txt,9,13.0,05:05.641
+instances/09.txt,10,44.0,05:09.314
+## instances/10.txt
+instances/10.txt,1,58.0,05:06.733
+instances/10.txt,2,N/A,05:00.00
+instances/10.txt,3,46.0,05:11.108
+instances/10.txt,4,41.0,05:06.519
+instances/10.txt,5,59.0,05:13.097
+instances/10.txt,6,41.0,05:11.609
+instances/10.txt,7,62.0,05:16.763
+instances/10.txt,8,35.0,05:06.354
+instances/10.txt,9,56.0,05:07.662
+instances/10.txt,10,58.0,05:11.072
