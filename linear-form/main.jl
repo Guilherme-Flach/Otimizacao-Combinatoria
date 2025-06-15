@@ -76,6 +76,7 @@ function main()
         # display(value.(prisions))
         display_solution(value.(prisions))
         @show objective_value(model)
+        @show objective_bound(model)
         @show sum(value.(is_used))
     end
 

@@ -1,0 +1,12 @@
+filepath,seed,value,bound,time,status
+## instances/06.txt
+instances/06.txt,1,8.0,6.000000000000009,05:05.042,Time limit reached
+instances/06.txt,2,8.0,7.0,05:05.411,Time limit reached
+instances/06.txt,3,8.0,7.0,05:05.010,Time limit reached
+instances/06.txt,4,8.0,6.000000000000059,05:04.964,Time limit reached
+instances/06.txt,5,7.999999999999532,6.0,05:04.887,Time limit reached
+instances/06.txt,6,7.999999999999966,6.0,05:04.941,Time limit reached
+instances/06.txt,7,8.0,6.0,05:04.676,Time limit reached
+instances/06.txt,8,8.0,6.000000000000008,05:04.447,Time limit reached
+instances/06.txt,9,8.0,6.000000000000006,05:04.472,Time limit reached
+instances/06.txt,10,8.0,6.000000000000033,05:04.731,Time limit reached

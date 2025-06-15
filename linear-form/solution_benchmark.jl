@@ -5,15 +5,25 @@ using Statistics
 # Test cases to run
 const TEST_CASES = [
     "instances/01.txt",
+    # "instances/01.txt",
+    # "instances/02.txt",
+    # "instances/03.txt",
+    # "instances/04.txt",
+    # "instances/05.txt",
+    # "instances/06.txt",
+    # "instances/07.txt",
+    # "instances/08.txt",
+    # "instances/09.txt",
+    # "instances/10.txt",
 ]
 
 # CSV header
-println("instance,n,m,seed,value,time")
+println("filepath,seed,value,bound,time,status")
 
 time_limit = 300
 
 # Store results per instance
-results = Dict{String, Vector{Tuple{Float64, Float64}}}()
+results = Dict{String,Vector{Tuple{Float64,Float64}}}()
 
 for filepath in TEST_CASES
     # Read n and m from the first line of the instance file
@@ -22,14 +32,20 @@ for filepath in TEST_CASES
     end
     n, m = split(first_line)
 
-    instance_results = Tuple{Float64, Float64}[]  # (value, time)
+    instance_results = Tuple{Float64,Float64}[]  # (value, time)
 
     for random_seed in 1:10
         start_time = now()
 
         # Run the actual command
         cmd = `julia linear-form/main.jl $filepath $time_limit $random_seed`
-        output = read(cmd, String)
+        output = ""
+        try
+            output = read(cmd, String)
+        catch
+            output = "N/A"
+        end
+        # println(output)
         elapsed = now() - start_time
 
         # Format time as MM:SS.sss
@@ -47,8 +63,16 @@ for filepath in TEST_CASES
             push!(instance_results, (value, time_secs))
         end
 
+        # Extract bound
+        m_bound = match(r"objective_bound\(model\)\s=\s(\d+\.\d+)", output)
+        bound = isnothing(m_bound) ? "N/A" : m_bound.captures[1]
+
+        # Extract status
+        m_status = match(r"Status\s*(.*)", output)
+        status = isnothing(m_status) ? "N/A" : m_status.captures[1]
+
         # Output CSV row
-        println("$filepath,$n,$m,$random_seed,$value,$formatted_time")
+        println("$filepath,$random_seed,$value,$bound,$formatted_time,$status")
     end
 
     results[filepath] = instance_results

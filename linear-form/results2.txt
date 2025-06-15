@@ -1,0 +1,12 @@
+filepath,seed,value,bound,time,status
+## instances/02.txt
+instances/02.txt,1,4.0,4.0,00:04.943,Optimal
+instances/02.txt,2,4.0,4.0,00:04.803,Optimal
+instances/02.txt,3,4.0,4.0,00:04.829,Optimal
+instances/02.txt,4,4.0,4.0,00:04.848,Optimal
+instances/02.txt,5,4.0,4.0,00:04.768,Optimal
+instances/02.txt,6,4.0,4.0,00:04.750,Optimal
+instances/02.txt,7,4.0,4.0,00:04.892,Optimal
+instances/02.txt,8,3.9999999999999996,3.9999999999999996,00:04.931,Optimal
+instances/02.txt,9,4.0,4.0,00:04.806,Optimal
+instances/02.txt,10,4.0,4.0,00:05.018,Optimal
