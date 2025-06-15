@@ -38,7 +38,7 @@ for filepath in TEST_CASES
         start_time = now()
 
         # Run the actual command
-        cmd = `julia linear-form/main.jl $filepath $time_limit $random_seed`
+        cmd = `julia formulation/main.jl $filepath $time_limit $random_seed`
         output = ""
         try
             output = read(cmd, String)
