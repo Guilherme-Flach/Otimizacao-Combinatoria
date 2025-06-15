@@ -1,0 +1,142 @@
+## instances/10.txt - 12500000
+######### 5 #########
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 31565 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.209 with value 32:
+Found better solution at 00:00.386 with value 31:
+Found better solution at 00:01.162 with value 30:
+
+
+######### END #########
+Finished in: 04:49.882
+Best solution value: 30
+
+------------------------------------------
+######### 7 #########
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 31565 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.210 with value 32:
+Found better solution at 00:00.292 with value 31:
+Found better solution at 00:04.155 with value 29:
+
+
+######### END #########
+Finished in: 04:50.464
+Best solution value: 29
+
+------------------------------------------
+######### 3 #########
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 31565 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.266 with value 32:
+Found better solution at 00:00.421 with value 31:
+Found better solution at 00:05.478 with value 30:
+
+
+######### END #########
+Finished in: 04:51.811
+Best solution value: 30
+
+------------------------------------------
+######### 10 #########
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 31565 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.214 with value 32:
+Found better solution at 00:00.546 with value 31:
+Found better solution at 00:14.706 with value 30:
+
+
+######### END #########
+Finished in: 04:55.042
+Best solution value: 30
+
+------------------------------------------
+######### 9 #########
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 31565 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.228 with value 32:
+Found better solution at 00:02.094 with value 31:
+Found better solution at 00:18.537 with value 30:
+Found better solution at 04:40.188 with value 29:
+
+
+######### END #########
+Finished in: 04:55.655
+Best solution value: 29
+
+------------------------------------------
+######### 6 #########
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 31565 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.219 with value 32:
+Found better solution at 00:01.338 with value 31:
+Found better solution at 00:13.938 with value 30:
+
+
+######### END #########
+Finished in: 04:56.292
+Best solution value: 30
+
+------------------------------------------
+######### 2 #########
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 31565 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.227 with value 32:
+Found better solution at 00:00.371 with value 31:
+Found better solution at 00:17.626 with value 30:
+
+
+######### END #########
+Finished in: 04:57.510
+Best solution value: 30
+
+------------------------------------------
+######### 4 #########
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 31565 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.252 with value 32:
+Found better solution at 00:00.918 with value 31:
+Found better solution at 00:01.628 with value 30:
+
+
+######### END #########
+Finished in: 04:58.658
+Best solution value: 30
+
+------------------------------------------
+######### 8 #########
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 31565 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.231 with value 32:
+Found better solution at 00:00.735 with value 31:
+Found better solution at 00:05.538 with value 30:
+
+
+######### END #########
+Finished in: 05:00.755
+Best solution value: 30
+
+------------------------------------------
+######### 1 #########
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 31565 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.230 with value 32:
+Found better solution at 00:00.602 with value 31:
+Found better solution at 00:06.880 with value 30:
+
+
+######### END #########
+Finished in: 05:02.850
+Best solution value: 30
+
+------------------------------------------

@@ -1,5 +1,4 @@
 import Dates
-using .Threads
 include("src/reader.jl")
 include("src/instance.jl")
 include("src/randomGreedy.jl")
@@ -9,8 +8,6 @@ using Random
 
 function main()
     programStartTime = Dates.now()
-
-    display(Threads.nthreads())
 
     function displaySolution(solution::Solution, isFirstSolution=false)
         elapsedTime = convert(Dates.DateTime, Dates.now() - programStartTime)
@@ -58,13 +55,13 @@ function main()
         display(instance.alliances)
     end
 
-    iterationsNum = Int32(floor(computationBudget / instance.m))
+    iterationsNum = Int32(floor(1000 * computationBudget / (instance.m * instance.n)))
 
     # GRASP it
     globalBest = randomGreedy(instance, 0.0, rev) # Run a deterministic greedy for the base solution
     globalBest = localSearch(globalBest, instance)
 
-    println("Executing $(iterationsNum) iterations (consuming $(instance.m) per iteration).")
+    println("Executing $(iterationsNum) iterations (consuming $(instance.m * instance.n) per iteration).")
 
     displaySolution(globalBest, true)
     for i = 1:iterationsNum
