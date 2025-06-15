@@ -3,8 +3,8 @@ using .Threads
 using Random
 
 # Test cases to run
-const TEST_CASE = "instances/06.txt"
-const computationBudget = 135000
+const TEST_CASE = "instances/09.txt"
+const computationBudget = 160000
 
 println("## $TEST_CASE - $computationBudget")
 for random_seed = 1:10

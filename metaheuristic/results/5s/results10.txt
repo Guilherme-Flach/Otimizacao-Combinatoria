@@ -13,7 +13,6 @@ Found better solution at 00:03.736 with value 30:
 Finished in: 00:05.055
 Best solution value: 30
 
-
 ------------------------------------------
 ######### 2 #########
 
@@ -27,7 +26,6 @@ Found better solution at 00:00.182 with value 31:
 ######### END #########
 Finished in: 00:04.904
 Best solution value: 31
-
 
 ------------------------------------------
 ######### 3 #########
@@ -44,7 +42,6 @@ Found better solution at 00:03.072 with value 30:
 Finished in: 00:05.051
 Best solution value: 30
 
-
 ------------------------------------------
 ######### 4 #########
 
@@ -60,7 +57,6 @@ Found better solution at 00:00.928 with value 30:
 Finished in: 00:05.071
 Best solution value: 30
 
-
 ------------------------------------------
 ######### 5 #########
 
@@ -75,7 +71,6 @@ Found better solution at 00:00.655 with value 30:
 ######### END #########
 Finished in: 00:05.051
 Best solution value: 30
-
 
 ------------------------------------------
 ######### 6 #########
@@ -107,7 +102,6 @@ Found better solution at 00:02.308 with value 29:
 Finished in: 00:05.053
 Best solution value: 29
 
-
 ------------------------------------------
 ######### 8 #########
 
@@ -123,7 +117,6 @@ Found better solution at 00:03.172 with value 30:
 Finished in: 00:05.065
 Best solution value: 30
 
-
 ------------------------------------------
 ######### 9 #########
 
@@ -138,7 +131,6 @@ Found better solution at 00:01.035 with value 31:
 Finished in: 00:05.079
 Best solution value: 31
 
-
 ------------------------------------------
 ######### 10 #########
 
@@ -152,6 +144,5 @@ Found better solution at 00:00.349 with value 31:
 ######### END #########
 Finished in: 00:05.036
 Best solution value: 31
-
 
 ------------------------------------------
