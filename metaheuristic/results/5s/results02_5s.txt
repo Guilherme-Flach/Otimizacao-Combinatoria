@@ -1,0 +1,140 @@
+## instances/02.txt - 40000
+######### 1 #########
+
+Number of prisioners: 10
+Number of restrictions: 18
+Executing 222222 iterations (consuming 180 per iteration).
+Generated first solution at 00:00.113 with value 4:
+
+
+######### END #########
+Finished in: 00:04.566
+Best solution value: 4
+
+------------------------------------------
+
+######### 2 #########
+
+Number of prisioners: 10
+Number of restrictions: 18
+Executing 222222 iterations (consuming 180 per iteration).
+Generated first solution at 00:00.105 with value 4:
+
+
+######### END #########
+Finished in: 00:04.622
+Best solution value: 4
+
+------------------------------------------
+
+######### 3 #########
+
+Number of prisioners: 10
+Number of restrictions: 18
+Executing 222222 iterations (consuming 180 per iteration).
+Generated first solution at 00:00.121 with value 4:
+
+
+######### END #########
+Finished in: 00:04.590
+Best solution value: 4
+
+------------------------------------------
+
+######### 4 #########
+
+Number of prisioners: 10
+Number of restrictions: 18
+Executing 222222 iterations (consuming 180 per iteration).
+Generated first solution at 00:00.112 with value 4:
+
+
+######### END #########
+Finished in: 00:04.588
+Best solution value: 4
+
+------------------------------------------
+
+######### 5 #########
+
+Number of prisioners: 10
+Number of restrictions: 18
+Executing 222222 iterations (consuming 180 per iteration).
+Generated first solution at 00:00.116 with value 4:
+
+
+######### END #########
+Finished in: 00:04.591
+Best solution value: 4
+
+------------------------------------------
+
+######### 6 #########
+
+Number of prisioners: 10
+Number of restrictions: 18
+Executing 222222 iterations (consuming 180 per iteration).
+Generated first solution at 00:00.108 with value 4:
+
+
+######### END #########
+Finished in: 00:04.514
+Best solution value: 4
+
+------------------------------------------
+
+######### 7 #########
+
+Number of prisioners: 10
+Number of restrictions: 18
+Executing 222222 iterations (consuming 180 per iteration).
+Generated first solution at 00:00.110 with value 4:
+
+
+######### END #########
+Finished in: 00:04.615
+Best solution value: 4
+
+------------------------------------------
+
+######### 8 #########
+
+Number of prisioners: 10
+Number of restrictions: 18
+Executing 222222 iterations (consuming 180 per iteration).
+Generated first solution at 00:00.105 with value 4:
+
+
+######### END #########
+Finished in: 00:04.567
+Best solution value: 4
+
+------------------------------------------
+
+######### 9 #########
+
+Number of prisioners: 10
+Number of restrictions: 18
+Executing 222222 iterations (consuming 180 per iteration).
+Generated first solution at 00:00.121 with value 4:
+
+
+######### END #########
+Finished in: 00:04.577
+Best solution value: 4
+
+------------------------------------------
+
+######### 10 #########
+
+Number of prisioners: 10
+Number of restrictions: 18
+Executing 222222 iterations (consuming 180 per iteration).
+Generated first solution at 00:00.112 with value 4:
+
+
+######### END #########
+Finished in: 00:04.568
+Best solution value: 4
+
+------------------------------------------

@@ -1,0 +1,141 @@
+## instances/03.txt - 100000
+
+######### 1 #########
+
+Number of prisioners: 20
+Number of restrictions: 95
+Executing 52631 iterations (consuming 1900 per iteration).
+Generated first solution at 00:00.121 with value 5:
+
+
+######### END #########
+Finished in: 00:04.957
+Best solution value: 5
+
+------------------------------------------
+
+######### 2 #########
+
+Number of prisioners: 20
+Number of restrictions: 95
+Executing 52631 iterations (consuming 1900 per iteration).
+Generated first solution at 00:00.114 with value 5:
+
+
+######### END #########
+Finished in: 00:04.861
+Best solution value: 5
+
+------------------------------------------
+
+######### 3 #########
+
+Number of prisioners: 20
+Number of restrictions: 95
+Executing 52631 iterations (consuming 1900 per iteration).
+Generated first solution at 00:00.120 with value 5:
+
+
+######### END #########
+Finished in: 00:04.805
+Best solution value: 5
+
+------------------------------------------
+
+######### 4 #########
+
+Number of prisioners: 20
+Number of restrictions: 95
+Executing 52631 iterations (consuming 1900 per iteration).
+Generated first solution at 00:00.119 with value 5:
+
+
+######### END #########
+Finished in: 00:04.863
+Best solution value: 5
+
+------------------------------------------
+
+######### 5 #########
+
+Number of prisioners: 20
+Number of restrictions: 95
+Executing 52631 iterations (consuming 1900 per iteration).
+Generated first solution at 00:00.111 with value 5:
+
+
+######### END #########
+Finished in: 00:05.092
+Best solution value: 5
+
+------------------------------------------
+
+######### 6 #########
+
+Number of prisioners: 20
+Number of restrictions: 95
+Executing 52631 iterations (consuming 1900 per iteration).
+Generated first solution at 00:00.118 with value 5:
+
+
+######### END #########
+Finished in: 00:04.907
+Best solution value: 5
+
+------------------------------------------
+
+######### 7 #########
+
+Number of prisioners: 20
+Number of restrictions: 95
+Executing 52631 iterations (consuming 1900 per iteration).
+Generated first solution at 00:00.114 with value 5:
+
+
+######### END #########
+Finished in: 00:04.934
+Best solution value: 5
+
+------------------------------------------
+
+######### 8 #########
+
+Number of prisioners: 20
+Number of restrictions: 95
+Executing 52631 iterations (consuming 1900 per iteration).
+Generated first solution at 00:00.114 with value 5:
+
+
+######### END #########
+Finished in: 00:04.830
+Best solution value: 5
+
+------------------------------------------
+
+######### 9 #########
+
+Number of prisioners: 20
+Number of restrictions: 95
+Executing 52631 iterations (consuming 1900 per iteration).
+Generated first solution at 00:00.106 with value 5:
+
+
+######### END #########
+Finished in: 00:04.807
+Best solution value: 5
+
+------------------------------------------
+
+######### 10 #########
+
+Number of prisioners: 20
+Number of restrictions: 95
+Executing 52631 iterations (consuming 1900 per iteration).
+Generated first solution at 00:00.128 with value 5:
+
+
+######### END #########
+Finished in: 00:04.907
+Best solution value: 5
+
+------------------------------------------

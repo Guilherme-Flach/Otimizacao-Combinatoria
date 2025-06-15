@@ -3,15 +3,15 @@ using .Threads
 using Random
 
 # Test cases to run
-const TEST_CASE = "instances/10.txt"
-const computationBudget = 12000000
+const TEST_CASE = "instances/06.txt"
+const computationBudget = 135000
 
 println("## $TEST_CASE - $computationBudget")
-@threads for random_seed = 1:10
+for random_seed = 1:10
     # Run the actual command
     cmd = `julia metaheuristic/main.jl $TEST_CASE $computationBudget $random_seed`
     output = read(cmd, String)
 
-    println("######### $random_seed #########\n\n$output\n")
+    println("\n######### $random_seed #########\n\n$output")
     println("------------------------------------------")
 end

@@ -1,0 +1,157 @@
+## instances/10.txt - 350000
+######### 1 #########
+
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 883 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.139 with value 32:
+Found better solution at 00:00.342 with value 31:
+Found better solution at 00:03.736 with value 30:
+
+
+######### END #########
+Finished in: 00:05.055
+Best solution value: 30
+
+
+------------------------------------------
+######### 2 #########
+
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 883 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.115 with value 32:
+Found better solution at 00:00.182 with value 31:
+
+
+######### END #########
+Finished in: 00:04.904
+Best solution value: 31
+
+
+------------------------------------------
+######### 3 #########
+
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 883 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.116 with value 32:
+Found better solution at 00:00.193 with value 31:
+Found better solution at 00:03.072 with value 30:
+
+
+######### END #########
+Finished in: 00:05.051
+Best solution value: 30
+
+
+------------------------------------------
+######### 4 #########
+
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 883 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.126 with value 32:
+Found better solution at 00:00.520 with value 31:
+Found better solution at 00:00.928 with value 30:
+
+
+######### END #########
+Finished in: 00:05.071
+Best solution value: 30
+
+
+------------------------------------------
+######### 5 #########
+
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 883 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.122 with value 32:
+Found better solution at 00:00.228 with value 31:
+Found better solution at 00:00.655 with value 30:
+
+
+######### END #########
+Finished in: 00:05.051
+Best solution value: 30
+
+
+------------------------------------------
+######### 6 #########
+
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 883 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.121 with value 32:
+Found better solution at 00:00.726 with value 31:
+
+
+######### END #########
+Finished in: 00:04.995
+Best solution value: 31
+
+
+------------------------------------------
+######### 7 #########
+
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 883 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.116 with value 32:
+Found better solution at 00:00.166 with value 31:
+Found better solution at 00:02.308 with value 29:
+
+
+######### END #########
+Finished in: 00:05.053
+Best solution value: 29
+
+
+------------------------------------------
+######### 8 #########
+
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 883 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.129 with value 32:
+Found better solution at 00:00.376 with value 31:
+Found better solution at 00:03.172 with value 30:
+
+
+######### END #########
+Finished in: 00:05.065
+Best solution value: 30
+
+
+------------------------------------------
+######### 9 #########
+
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 883 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.134 with value 32:
+Found better solution at 00:01.035 with value 31:
+
+
+######### END #########
+Finished in: 00:05.079
+Best solution value: 31
+
+
+------------------------------------------
+######### 10 #########
+
+Number of prisioners: 100
+Number of restrictions: 3960
+Executing 883 iterations (consuming 396000 per iteration).
+Generated first solution at 00:00.138 with value 32:
+Found better solution at 00:00.349 with value 31:
+
+
+######### END #########
+Finished in: 00:05.036
+Best solution value: 31
+
+
+------------------------------------------
